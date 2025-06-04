@@ -167,23 +167,25 @@ export default function Home() {
                     />
                   )}
                   <div className="flex-1 flex flex-col">
-                    <h3 className="font-medium whitespace-nowrap">
-                      {job.title} -{" "}
-                      {job.companyUrl ? (
-                        <a
-                          href={job.companyUrl}
-                          className="underline decoration-gray-300"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {job.company}
-                        </a>
-                      ) : (
-                        job.company
-                      )}
-                      {job.companyUrl && (
-                        <ArrowUpRight className="inline-block w-4 h-4 align-text-bottom ml-1" />
-                      )}
+                    <h3 className="font-medium">
+                      <span className="block md:inline">{job.title} -</span>
+                      <span className="block md:inline">
+                        {job.companyUrl ? (
+                          <a
+                            href={job.companyUrl}
+                            className="underline decoration-gray-300"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {job.company}
+                          </a>
+                        ) : (
+                          job.company
+                        )}
+                        {job.companyUrl && (
+                          <ArrowUpRight className="inline-block w-4 h-4 align-text-bottom ml-1" />
+                        )}
+                      </span>
                     </h3>
                     {job.location && job.workType && (
                       <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
@@ -222,9 +224,9 @@ export default function Home() {
         <div className="space-y-6">
           {educations.map((edu) => (
             <div key={edu.id}>
-              <div className="flex flex-col md:flex-row md:items-center gap-2">
+              <div className="flex flex-row items-center gap-2">
                 <h3 className="font-medium">{edu.degree}</h3>
-                <span className="text-sm text-muted-foreground md:ml-auto">
+                <span className="text-sm text-muted-foreground ml-auto">
                   {edu.period}
                 </span>
               </div>
