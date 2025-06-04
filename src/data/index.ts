@@ -127,15 +127,15 @@ export const socialLinks: SocialLink[] = [
 // Skills Data
 export const skills: string[] = [
   "TypeScript",
-  "Node.js",
   "React",
+  "REST API",
   "NestJS",
+  "Node.js",
   "Postgres",
   "Prisma",
   "Redis",
   "Docker",
   "Turborepo",
-  "REST API",
   "GCP",
 ];
 
