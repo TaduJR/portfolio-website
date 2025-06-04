@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf node_modules && rm -rf dist",
+    "clean": "rm -rf node_modules && rm -rf dist && rm -rf package-lock.yaml",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

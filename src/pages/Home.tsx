@@ -33,6 +33,7 @@ import TurborepoLogo from "@/assets/turborepo.svg";
 import ApiLogo from "@/assets/api.svg";
 import GcpLogo from "@/assets/gcp.svg";
 import Avatar from "@/assets/TaduJR.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Map each skill name to its logo
 const skillLogos: Record<string, string> = {
@@ -52,6 +53,7 @@ const skillLogos: Record<string, string> = {
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setMounted(true);
@@ -60,7 +62,13 @@ export default function Home() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-16">
       {/* Header / Intro */}
-      <div className="flex items-center gap-4 mb-12">
+      <div
+        className={`mb-12 ${
+          isMobile
+            ? "flex flex-col items-center gap-4 text-center"
+            : "flex items-center gap-4"
+        }`}
+      >
         <img
           src={Avatar}
           alt={personalInfo.name}
@@ -85,10 +93,10 @@ export default function Home() {
             )}
             <Moon className="w-4 h-4" />
           </div>
-          <Button asChild className="gap-2">
+          <Button asChild className="gap-2 rounded-none">
             <a href="/resume.pdf" download>
-              Download CV
-              <Download className="w-3 h-3 rounded-none" />
+              Download Resume
+              <Download className="w-3 h-3" />
             </a>
           </Button>
         </div>

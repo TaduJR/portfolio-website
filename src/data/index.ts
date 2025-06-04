@@ -34,19 +34,19 @@ export const workExperiences: WorkExperience[] = [
   {
     id: "pickup",
     period: "Aug 2024 - Present",
-    title: "Full-Stack Engineer",
+    title: "Full-Stack Developer",
     company: "Pickup ICT Solution",
     companyUrl: "https://pickup.et",
     description:
-      "Developed and Delivering eCommerce and delivery applications using Monorepo architecture. Contributed to implementing Clean Architecture with SOLID principles in the platform.",
+      "Developed and Delivering eCommerce and delivery applications using Monorepo architecture and RESTful APIs. Contributed to implementing Clean Architecture with SOLID principles in the platform.",
     technologies: [
       "TypeScript",
       "React",
       "Node.js",
+      "NestJS",
       "Postgres",
       "Redis",
       "Turborepo",
-      "NestJS",
       "GCP",
     ],
     location: "Ethiopia, Addis Ababa",
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     name: "Data Structures and Algorithms",
     url: "https://github.com/TaduJR/Data-Structures-using-CPP",
     description:
-      "Implementation of various data structures including stacks, linked list, doubly linked list, and queue in C++.",
+      "Implementation of various data structures including Stacks, Linked List, Doubly Linked List, and Queue in C++.",
     technologies: ["C++", "Algorithms", "Data Structures"],
     year: "2023",
     status: "2023",
@@ -145,5 +145,5 @@ export const personalInfo = {
   title: "Full-Stack Developer",
   email: "nattysec26@gmail.com",
   about:
-    "I'm a full-stack engineer focused on building clean, efficient applications with modern technologies. I specialize in TypeScript-based stacks and have experience with monorepo architectures and clean code principles.",
+    "I'm a full-stack developer focused on building clean, efficient applications with modern technologies. I specialize in TypeScript-based stacks and have experience with monorepo architectures and clean code principles.",
 };
