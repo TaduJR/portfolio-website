@@ -60,231 +60,239 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-16">
-      {/* Header / Intro */}
-      <div
-        className={`mb-12 ${
-          isMobile
-            ? "flex flex-col items-center gap-4 text-center"
-            : "flex items-center gap-4"
-        }`}
-      >
-        <img
-          src={Avatar}
-          alt={personalInfo.name}
-          className="w-20 h-20 rounded-full"
-        />
-        <div className="flex-1">
-          <h1 className="text-2xl font-medium">{personalInfo.name}</h1>
-          <p className="text-muted-foreground">{personalInfo.title}</p>
-          <p className="text-muted-foreground text-sm">{personalInfo.email}</p>
+    <div className="max-w-2xl mx-auto px-4 py-7">
+      {mounted && (
+        <div className="flex justify-end mb-4 items-center gap-2">
+          <Sun className="w-4 h-4" />
+          <Switch
+            checked={theme === "dark"}
+            onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+            className="data-[state=checked]:bg-gray-800"
+          />
+          <Moon className="w-4 h-4" />
         </div>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Sun className="w-4 h-4" />
-            {mounted && (
-              <Switch
-                checked={theme === "dark"}
-                onCheckedChange={(checked) =>
-                  setTheme(checked ? "dark" : "light")
-                }
-                className="data-[state=checked]:bg-gray-800"
-              />
-            )}
-            <Moon className="w-4 h-4" />
+      )}
+      <div className="max-w-2xl mx-auto px-4 py-7">
+        {/* Header / Intro */}
+        <div
+          className={`mb-12 ${
+            isMobile
+              ? "flex flex-col items-center gap-4 text-center"
+              : "flex items-center gap-4"
+          }`}
+        >
+          <img
+            src={Avatar}
+            alt={personalInfo.name}
+            className="w-20 h-20 rounded-full"
+          />
+          <div className="flex-1">
+            <h1 className="text-2xl font-medium">{personalInfo.name}</h1>
+            <p className="text-muted-foreground">{personalInfo.title}</p>
+            <p className="text-muted-foreground text-sm">
+              {personalInfo.email}
+            </p>
           </div>
-          <Button asChild className="gap-2 rounded-none">
-            <a href="/resume.pdf" download>
-              Download Resume
-              <Download className="w-3 h-3" />
-            </a>
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button asChild className="gap-2 rounded-none">
+              <a href="/resume.pdf" download>
+                Download Resume
+                <Download className="w-3 h-3" />
+              </a>
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {/* About Section */}
-      <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
-          About
-        </h2>
-        <p className="text-foreground">{personalInfo.about}</p>
-      </section>
+        {/* About Section */}
+        <section className="mb-12">
+          <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+            About
+          </h2>
+          <p className="text-foreground">{personalInfo.about}</p>
+        </section>
 
-      {/* Key Skills Section */}
-      <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
-          Key Skills
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <Badge
-              key={skill}
-              variant="outline"
-              className="rounded-none px-3 py-1 text-sm"
-            >
-              <img
-                src={skillLogos[skill]}
-                alt={`${skill} logo`}
-                className="h-4 w-4"
-              />
-              {skill}
-            </Badge>
-          ))}
-        </div>
-      </section>
-
-      {/* Work Experience Section */}
-      <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
-          Work Experience
-        </h2>
-        <div className="space-y-10">
-          {workExperiences.map((job) => (
-            <div key={job.id}>
-              <div
-                className={
-                  isMobile
-                    ? "flex flex-col gap-1 mb-1"
-                    : "flex items-center gap-2 mb-1"
-                }
+        {/* Key Skills Section */}
+        <section className="mb-12">
+          <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+            Key Skills
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <Badge
+                key={skill}
+                variant="outline"
+                className="rounded-none px-3 py-1 text-sm"
               >
-                <div className="flex items-center gap-2">
-                  <h3 className="font-medium">
-                    {job.title} -{" "}
-                    {job.companyUrl ? (
+                <img
+                  src={skillLogos[skill]}
+                  alt={`${skill} logo`}
+                  className="h-4 w-4"
+                />
+                {skill}
+              </Badge>
+            ))}
+          </div>
+        </section>
+
+        {/* Work Experience Section */}
+        <section className="mb-12">
+          <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+            Work Experience
+          </h2>
+          <div className="space-y-10">
+            {workExperiences.map((job) => (
+              <div key={job.id}>
+                <div
+                  className={
+                    isMobile
+                      ? "flex flex-col gap-1 mb-1"
+                      : "flex items-center gap-2 mb-1"
+                  }
+                >
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-medium">
+                      {job.title} -{" "}
+                      {job.companyUrl ? (
+                        <a
+                          href={job.companyUrl}
+                          className="underline decoration-gray-300"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {job.company}
+                        </a>
+                      ) : (
+                        job.company
+                      )}
+                    </h3>
+                    {job.companyUrl && (
                       <a
                         href={job.companyUrl}
-                        className="underline decoration-gray-300"
+                        className="inline-block"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {job.company}
+                        <ArrowUpRight className="w-4 h-4" />
                       </a>
-                    ) : (
-                      job.company
                     )}
-                  </h3>
-                  {job.companyUrl && (
-                    <a
-                      href={job.companyUrl}
-                      className="inline-block"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-                <span
-                  className={
-                    isMobile
-                      ? "text-sm text-muted-foreground"
-                      : "text-sm text-muted-foreground ml-auto"
-                  }
-                >
-                  {job.period}
-                </span>
-              </div>
-              {job.location && job.workType && (
-                <div className="flex gap-2 mb-1 text-sm">
-                  <span className="text-muted-foreground">{job.location}</span>
-                  <span className="text-muted-foreground">•</span>
-                  <span className="text-muted-foreground">{job.workType}</span>
-                </div>
-              )}
-              <p className="text-foreground mb-2">{job.description}</p>
-              <div className="flex flex-wrap gap-1 text-sm text-muted-foreground">
-                {job.technologies.map((tech, i) => (
-                  <span key={`${job.id}-tech-${i}`} className="font-medium">
-                    {tech}
-                    {i < job.technologies.length - 1 && " • "}
+                  </div>
+                  <span
+                    className={
+                      isMobile
+                        ? "text-sm text-muted-foreground"
+                        : "text-sm text-muted-foreground ml-auto"
+                    }
+                  >
+                    {job.period}
                   </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Side Projects Section */}
-      <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
-          Side Projects
-        </h2>
-        <div className="space-y-10">
-          {projects.map((project) => (
-            <div key={project.id} className="flex items-start gap-2">
-              <div className="text-2xl pt-1">{project.logo}</div>
-              <div className="flex-1">
-                <div className="flex items-center gap-1">
-                  <h3 className="font-medium">{project.name}</h3>
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      className="inline-block"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-                  )}
                 </div>
-                <a
-                  href={project.url}
-                  className="text-muted-foreground underline text-sm mb-2 inline-block"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {project.url}
-                </a>
-                <p className="text-foreground mb-2">{project.description}</p>
+                {job.location && job.workType && (
+                  <div className="flex gap-2 mb-1 text-sm">
+                    <span className="text-muted-foreground">
+                      {job.location}
+                    </span>
+                    <span className="text-muted-foreground">•</span>
+                    <span className="text-muted-foreground">
+                      {job.workType}
+                    </span>
+                  </div>
+                )}
+                <p className="text-foreground mb-2">{job.description}</p>
                 <div className="flex flex-wrap gap-1 text-sm text-muted-foreground">
-                  {project.technologies.map((tech, i) => (
-                    <span
-                      key={`${project.id}-tech-${i}`}
-                      className="font-medium"
-                    >
+                  {job.technologies.map((tech, i) => (
+                    <span key={`${job.id}-tech-${i}`} className="font-medium">
                       {tech}
-                      {i < project.technologies.length - 1 && " • "}
+                      {i < job.technologies.length - 1 && " • "}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
 
-      {/* Links Section */}
-      <section>
-        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
-          Links
-        </h2>
-        <div className="space-y-2">
-          {socialLinks.map((link) => (
-            <div key={link.id} className="grid grid-cols-[100px_1fr] gap-4">
-              <div className="text-sm text-muted-foreground">
-                {link.platform}
+        {/* Side Projects Section */}
+        <section className="mb-12">
+          <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+            Side Projects
+          </h2>
+          <div className="space-y-10">
+            {projects.map((project) => (
+              <div key={project.id} className="flex items-start gap-2">
+                <div className="text-2xl pt-1">{project.logo}</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-1">
+                    <h3 className="font-medium">{project.name}</h3>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        className="inline-block"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                  <a
+                    href={project.url}
+                    className="text-muted-foreground underline text-sm mb-2 inline-block"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.url}
+                  </a>
+                  <p className="text-foreground mb-2">{project.description}</p>
+                  <div className="flex flex-wrap gap-1 text-sm text-muted-foreground">
+                    {project.technologies.map((tech, i) => (
+                      <span
+                        key={`${project.id}-tech-${i}`}
+                        className="font-medium"
+                      >
+                        {tech}
+                        {i < project.technologies.length - 1 && " • "}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-              <div>
-                <a
-                  href={link.url}
-                  className="flex items-center gap-2 underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {link.icon === "linkedin" && <Linkedin className="w-4 h-4" />}
-                  {link.icon === "github" && <Github className="w-4 h-4" />}
-                  {link.icon === "globe" && <Globe className="w-4 h-4" />}
-                  {link.icon === "mail" && <Mail className="w-4 h-4" />}
-                  <span>{link.username}</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Links Section */}
+        <section>
+          <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+            Links
+          </h2>
+          <div className="space-y-2">
+            {socialLinks.map((link) => (
+              <div key={link.id} className="grid grid-cols-[100px_1fr] gap-4">
+                <div className="text-sm text-muted-foreground">
+                  {link.platform}
+                </div>
+                <div>
+                  <a
+                    href={link.url}
+                    className="flex items-center gap-2 underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.icon === "linkedin" && (
+                      <Linkedin className="w-4 h-4" />
+                    )}
+                    {link.icon === "github" && <Github className="w-4 h-4" />}
+                    {link.icon === "globe" && <Globe className="w-4 h-4" />}
+                    {link.icon === "mail" && <Mail className="w-4 h-4" />}
+                    <span>{link.username}</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

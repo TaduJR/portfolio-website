@@ -141,7 +141,7 @@ export const skills: string[] = [
 
 // Personal Info
 export const personalInfo = {
-  name: "Natnael Tadu Yilma",
+  name: "Natnael Yilma (TaduJR)",
   title: "Full-Stack Developer",
   email: "nattysec26@gmail.com",
   about:
