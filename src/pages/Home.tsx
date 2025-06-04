@@ -162,23 +162,25 @@ export default function Home() {
                   )}
                   <div className="flex-1 flex flex-col">
                     <div className="flex flex-col md:flex-row md:items-center gap-2">
-                      <h3 className="font-medium whitespace-nowrap">
+                      <h3 className="font-medium">
                         {job.title} -{" "}
-                        {job.companyUrl ? (
-                          <a
-                            href={job.companyUrl}
-                            className="underline decoration-gray-300"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {job.company}
-                          </a>
-                        ) : (
-                          job.company
-                        )}
-                        {job.companyUrl && (
-                          <ArrowUpRight className="inline-block w-4 h-4 align-text-bottom" />
-                        )}
+                        <span className="block md:inline">
+                          {job.companyUrl ? (
+                            <a
+                              href={job.companyUrl}
+                              className="underline decoration-gray-300"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {job.company}
+                            </a>
+                          ) : (
+                            job.company
+                          )}
+                          {job.companyUrl && (
+                            <ArrowUpRight className="inline-block w-4 h-4 align-text-bottom ml-1" />
+                          )}
+                        </span>
                       </h3>
                       <span className="text-sm text-muted-foreground md:ml-auto">
                         {job.period}
