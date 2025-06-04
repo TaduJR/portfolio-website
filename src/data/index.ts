@@ -55,7 +55,7 @@ export const workExperiences: WorkExperience[] = [
   {
     id: "calcom",
     period: "May 2024 - Aug 2024",
-    title: "Open-Source Weekend Developer",
+    title: "Open-Source Backend Developer",
     company: "Cal.com",
     companyUrl: "https://cal.com",
     description:

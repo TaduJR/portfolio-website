@@ -104,13 +104,15 @@ export default function Home() {
 
       {/* About Section */}
       <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase mb-4">About</h2>
+        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+          About
+        </h2>
         <p className="text-foreground">{personalInfo.about}</p>
       </section>
 
       {/* Key Skills Section */}
       <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase mb-4">
+        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
           Key Skills
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -133,14 +135,20 @@ export default function Home() {
 
       {/* Work Experience Section */}
       <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase mb-4">
+        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
           Work Experience
         </h2>
         <div className="space-y-10">
           {workExperiences.map((job) => (
             <div key={job.id}>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
+              <div
+                className={
+                  isMobile
+                    ? "flex flex-col gap-1 mb-1"
+                    : "flex items-center gap-2 mb-1"
+                }
+              >
+                <div className="flex items-center gap-2">
                   <h3 className="font-medium">
                     {job.title} -{" "}
                     {job.companyUrl ? (
@@ -166,30 +174,32 @@ export default function Home() {
                       <ArrowUpRight className="w-4 h-4" />
                     </a>
                   )}
-                  <span className="text-sm text-muted-foreground ml-auto">
-                    {job.period}
+                </div>
+                <span
+                  className={
+                    isMobile
+                      ? "text-sm text-muted-foreground"
+                      : "text-sm text-muted-foreground ml-auto"
+                  }
+                >
+                  {job.period}
+                </span>
+              </div>
+              {job.location && job.workType && (
+                <div className="flex gap-2 mb-1 text-sm">
+                  <span className="text-muted-foreground">{job.location}</span>
+                  <span className="text-muted-foreground">•</span>
+                  <span className="text-muted-foreground">{job.workType}</span>
+                </div>
+              )}
+              <p className="text-foreground mb-2">{job.description}</p>
+              <div className="flex flex-wrap gap-1 text-sm text-muted-foreground">
+                {job.technologies.map((tech, i) => (
+                  <span key={`${job.id}-tech-${i}`} className="font-medium">
+                    {tech}
+                    {i < job.technologies.length - 1 && " • "}
                   </span>
-                </div>
-                {job.location && job.workType && (
-                  <div className="flex gap-2 mb-1 text-sm">
-                    <span className="text-muted-foreground">
-                      {job.location}
-                    </span>
-                    <span className="text-muted-foreground">•</span>
-                    <span className="text-muted-foreground">
-                      {job.workType}
-                    </span>
-                  </div>
-                )}
-                <p className="text-foreground mb-2">{job.description}</p>
-                <div className="flex flex-wrap gap-1 text-sm text-muted-foreground">
-                  {job.technologies.map((tech, i) => (
-                    <span key={`${job.id}-tech-${i}`} className="font-medium">
-                      {tech}
-                      {i < job.technologies.length - 1 && " • "}
-                    </span>
-                  ))}
-                </div>
+                ))}
               </div>
             </div>
           ))}
@@ -198,7 +208,7 @@ export default function Home() {
 
       {/* Side Projects Section */}
       <section className="mb-12">
-        <h2 className="text-sm text-muted-foreground uppercase mb-4">
+        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
           Side Projects
         </h2>
         <div className="space-y-10">
@@ -247,7 +257,9 @@ export default function Home() {
 
       {/* Links Section */}
       <section>
-        <h2 className="text-sm text-muted-foreground uppercase mb-4">Links</h2>
+        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+          Links
+        </h2>
         <div className="space-y-2">
           {socialLinks.map((link) => (
             <div key={link.id} className="grid grid-cols-[100px_1fr] gap-4">
