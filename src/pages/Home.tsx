@@ -19,6 +19,7 @@ import {
   socialLinks,
   skills,
   personalInfo,
+  educations,
 } from "@/data";
 
 import TypescriptLogo from "@/assets/typescript.svg";
@@ -37,6 +38,7 @@ import Avatar from "@/assets/TaduJR.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
 import CalcomLightLogo from "@/assets/calcom-light.avif";
 import CalcomDarkLogo from "@/assets/calcom-dark.avif";
+import SwaggerLogo from "@/assets/swagger.svg";
 
 const skillLogos = {
   TypeScript: TypescriptLogo,
@@ -50,6 +52,7 @@ const skillLogos = {
   Turborepo: TurborepoLogo,
   "REST API": ApiLogo,
   GCP: GcpLogo,
+  Swagger: SwaggerLogo,
 } as Record<string, string | { light: string; dark: string }>;
 
 const companyLogos = {
@@ -94,6 +97,9 @@ export default function Home() {
           <h1 className="text-2xl font-medium">{personalInfo.name}</h1>
           <p className="text-muted-foreground">{personalInfo.title}</p>
           <p className="text-muted-foreground text-sm">{personalInfo.email}</p>
+          <p className="text-muted-foreground text-sm">
+            {personalInfo.address}
+          </p>
         </div>
         <div className="flex items-center gap-4">
           <Button asChild className="gap-2 rounded-none">
@@ -161,31 +167,24 @@ export default function Home() {
                     />
                   )}
                   <div className="flex-1 flex flex-col">
-                    <div className="flex flex-col md:flex-row md:items-center gap-2">
-                      <h3 className="font-medium">
-                        {job.title} -{" "}
-                        <span className="block md:inline">
-                          {job.companyUrl ? (
-                            <a
-                              href={job.companyUrl}
-                              className="underline decoration-gray-300"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {job.company}
-                            </a>
-                          ) : (
-                            job.company
-                          )}
-                          {job.companyUrl && (
-                            <ArrowUpRight className="inline-block w-4 h-4 align-text-bottom ml-1" />
-                          )}
-                        </span>
-                      </h3>
-                      <span className="text-sm text-muted-foreground md:ml-auto">
-                        {job.period}
-                      </span>
-                    </div>
+                    <h3 className="font-medium whitespace-nowrap">
+                      {job.title} -{" "}
+                      {job.companyUrl ? (
+                        <a
+                          href={job.companyUrl}
+                          className="underline decoration-gray-300"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {job.company}
+                        </a>
+                      ) : (
+                        job.company
+                      )}
+                      {job.companyUrl && (
+                        <ArrowUpRight className="inline-block w-4 h-4 align-text-bottom ml-1" />
+                      )}
+                    </h3>
                     {job.location && job.workType && (
                       <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                         <span>{job.location}</span>
@@ -194,16 +193,43 @@ export default function Home() {
                       </div>
                     )}
                   </div>
+                  <span className="text-sm text-muted-foreground ml-auto hidden md:block">
+                    {job.period}
+                  </span>
                 </div>
-                <p className="text-foreground mb-2">{job.description}</p>
-                <div className="flex flex-wrap gap-1 text-sm text-muted-foreground">
-                  {job.technologies.map((tech, i) => (
-                    <span key={`${job.id}-tech-${i}`} className="font-medium">
-                      {tech}
-                      {i < job.technologies.length - 1 && " • "}
-                    </span>
-                  ))}
+                <div className="text-sm text-muted-foreground md:hidden mb-2">
+                  {job.period}
                 </div>
+              </div>
+              <p className="text-foreground mb-2">{job.description}</p>
+              <div className="flex flex-wrap gap-1 text-sm text-muted-foreground">
+                {job.technologies.map((tech, i) => (
+                  <span key={`${job.id}-tech-${i}`} className="font-medium">
+                    {tech}
+                    {i < job.technologies.length - 1 && " • "}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm text-muted-foreground uppercase font-semibold mb-4">
+          Education
+        </h2>
+        <div className="space-y-6">
+          {educations.map((edu) => (
+            <div key={edu.id}>
+              <div className="flex flex-col md:flex-row md:items-center gap-2">
+                <h3 className="font-medium">{edu.degree}</h3>
+                <span className="text-sm text-muted-foreground md:ml-auto">
+                  {edu.period}
+                </span>
+              </div>
+              <div className="text-sm text-muted-foreground mt-1">
+                {edu.institution}
               </div>
             </div>
           ))}

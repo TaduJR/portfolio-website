@@ -48,6 +48,7 @@ export const workExperiences: WorkExperience[] = [
       "Redis",
       "Turborepo",
       "GCP",
+      "Swagger",
     ],
     location: "Ethiopia, Addis Ababa",
     workType: "Onsite",
@@ -135,6 +136,7 @@ export const skills: string[] = [
   "Prisma",
   "Redis",
   "Docker",
+  "Swagger",
   "Turborepo",
   "GCP",
 ];
@@ -144,6 +146,29 @@ export const personalInfo = {
   name: "Natnael Yilma (TaduJR)",
   title: "Full-Stack Developer",
   email: "nattysec26@gmail.com",
+  address: "Ethiopia, Addis Ababa",
   about:
     "I'm a full-stack developer focused on building clean, efficient applications with modern technologies. I specialize in TypeScript-based stacks and have experience with monorepo architectures and clean code principles.",
 };
+
+// Education Data
+export interface Education {
+  id: string;
+  degree: string;
+  period: string;
+  institution: string;
+}
+export const educations: Education[] = [
+  {
+    id: "hilcoe",
+    degree: "BSc. Computer Science",
+    period: "Oct 2019 - Feb 2023",
+    institution: "HiLCoE School of Computer Science and Technology College",
+  },
+  {
+    id: "unity",
+    degree: "BSc. Computer Science",
+    period: "Feb 2023 - Feb 2025",
+    institution: "Unity University",
+  },
+];
