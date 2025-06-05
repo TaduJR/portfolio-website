@@ -41,6 +41,7 @@ import CalcomDarkLogo from "@/assets/calcom-dark.avif";
 import SwaggerLogo from "@/assets/swagger.svg";
 import MongodbLogo from "@/assets/mongodb.svg";
 import TailwindLogo from "@/assets/tailwind.svg";
+import Resume from "@/assets/TaduJR-Resume.pdf";
 
 const skillLogos = {
   TypeScript: TypescriptLogo,
@@ -107,7 +108,7 @@ export default function Home() {
         </div>
         <div className="flex items-center gap-4">
           <Button asChild className="gap-2 rounded-none">
-            <a href="/resume.pdf" download>
+            <a href={Resume} download>
               Download Resume
               <Download className="w-3 h-3" />
             </a>
