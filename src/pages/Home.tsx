@@ -39,6 +39,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import CalcomLightLogo from "@/assets/calcom-light.avif";
 import CalcomDarkLogo from "@/assets/calcom-dark.avif";
 import SwaggerLogo from "@/assets/swagger.svg";
+import MongodbLogo from "@/assets/mongodb.svg";
+import TailwindLogo from "@/assets/tailwind.svg";
 
 const skillLogos = {
   TypeScript: TypescriptLogo,
@@ -53,6 +55,8 @@ const skillLogos = {
   "REST API": ApiLogo,
   GCP: GcpLogo,
   Swagger: SwaggerLogo,
+  MongoDB: MongodbLogo,
+  Tailwind: TailwindLogo,
 } as Record<string, string | { light: string; dark: string }>;
 
 const companyLogos = {
@@ -168,7 +172,7 @@ export default function Home() {
                   )}
                   <div className="flex-1 flex flex-col">
                     <h3 className="font-medium">
-                      <span className="block md:inline">{job.title} -</span>
+                      <span className="block md:inline">{job.title} - </span>
                       <span className="block md:inline">
                         {job.companyUrl ? (
                           <a
